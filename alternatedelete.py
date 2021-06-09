@@ -9,9 +9,9 @@ connection=pymysql.connect(host='localhost',user=username,
 
 try:
     with connection.cursor() as cursor:
-        rows=[('john',41,'1982/1/18'),('kali',23,'1938/1/28'),('smith',42,'1985/11/8'),('karry',47,'1973/11/28')]
-      # LIST OF ITEMS IS PASSED
-        cursor.executemany("insert into SCHOOL values(%s, %s, %s);",rows)
-        connection.commit()
-
+       rows= cursor.execute("delete from SCHOOL where name= %s;",'kali')
+       connection.commit()
+   # ALTERNATE UPDATE IS WHERE THERE IS A SPECIFIC RECORD // NOT MULTIPLE ROWS TO BE PASSED
+        # SO WE PASS PARTICULAR RECORD INSTEAD OF ROWS AS IN UPDATE MANY
+    
 finally:connection.close()                                   
